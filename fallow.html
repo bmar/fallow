@@ -7,23 +7,23 @@
 
 <body>
 <div id="jseon">
-  <dl data-fallow>
+  <dl data-fallow="object">
     <dt>glossary</dt>
     <dd>
-      <dl data-fallow>
+      <dl data-fallow="object">
         <dt>title</dt>
         <dd>example glossary</dd>
         <dt>GlossDiv</dt>
         <dd>
-          <dl data-fallow>
+          <dl data-fallow="object">
             <dt>title</dt>
             <dd>S</dd>
             <dt>GlossList</dt>
             <dd>
-              <dl data-fallow>
+              <dl data-fallow="object">
                 <dt>GlossEntry</dt>
                 <dd>
-                  <dl data-fallow>
+                  <dl data-fallow="object">
                     <dt>ID</dt>
                     <dd>SGML</dd>
                     <dt>SortAs</dt>
@@ -33,15 +33,15 @@
                     <dt>Acronym</dt>
                     <dd>SGML</dd>
                     <dt>Abbrev</dt>
-                    <dd>ISO 8879:1986</dd>
+                    <dd>ISO 8879 1986</dd>
                     <dt>GlossDef</dt>
                     <dd>
-                      <dl data-fallow>
+                      <dl data-fallow="object">
                         <dt>para</dt>
-                        <dd>A meta-markup language, used to create markup languages such as DocBook.</dd>
+                        <dd>A meta markup language used to create markup languages such as DocBook</dd>
                         <dt>GlossSeeAlso</dt>
                         <dd>
-                          <ol data-fallow>
+                          <ol data-fallow="array">
                             <li>GML</li>
                             <li>XML</li>
                           </ol>
@@ -67,11 +67,11 @@ var rjseon = [
 	[/[^>]*$/,""],
 	[/\t\r\n/g,""],
 	[/>\s+</g,"><"],
-	[/<dl data-fallow><dt>/g,"{"],
+	[/<dl data-fallow="object"><dt>/g,"{"],
 	[/<\/dd><\/dl>/g,"}"],
 	[/<\/dt><dd>/g,":"],
 	[/(<\/dd><d[dt]>|<\/li><li>)/g,","],
-	[/<ol data-fallow><li>/g,"["],
+	[/<ol data-fallow="array"><li>/g,"["],
 	[/<\/li><\/ol>/g,"]"],
 	[/([\w\s]+)/g,"\"$1\""],
 	[/"([\d\.]+|true|false|null)"/g,"$1"]
