@@ -1,4 +1,4 @@
 fallow
 ======
 
-javascript search optimized object notation - an HTML subset for representing JSON to search indexes
+an HTML subset for representing JSON to search indexes that can easily be transformed into serialized JSON for single page apps
