@@ -17,12 +17,15 @@
 	var j=rjseon.length;
 	var i=0;
 	var fallow = {};
-	var harvest = null;
-	fallow.farm = function farm( str ){
-		for (i;i < j;i++) {
-			str = str.replace(rjseon[i][0],rjseon[i][1]);
+	fallow.farm = function farm( id ){
+		var str = document.getElementById( id ).innerHTML;
+		this.harvest = this.harvest || {};
+		if ( !this.harvest[id] ) {
+			for (i;i < j;i++) {
+				str = str.replace(rjseon[i][0],rjseon[i][1]);
+			}
+			this.harvest[id] = str;
 		}
-		this.harvest = str;
 	}
 	window.fallow = fallow;
 })(window);

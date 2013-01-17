@@ -64,10 +64,10 @@
 </script>
 <script>
 var a = new Date();
-fallow.farm(document.getElementById('jseon').innerHTML);
+fallow.farm('jseon');
 var b = new Date();
 console.log(b-a);
-var revive = window.JSON.parse(fallow.harvest);
+var revive = window.JSON.parse(fallow.harvest.jseon);
 console.log(revive);
 </script>
 </body>
