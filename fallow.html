@@ -7,23 +7,23 @@
 
 <body>
 <div id="jseon">
-  <dl data-fallow="object">
+  <dl itemscope itemtype="http://schema.org/Glossary">
     <dt>glossary</dt>
-    <dd>
-      <dl data-fallow="object">
+    <dd itemprop="glossary">
+      <dl itemscope itemtype="http://schema.org/Title">
         <dt>title</dt>
-        <dd>example glossary</dd>
+        <dd itemprop="title">example glossary</dd>
         <dt>GlossDiv</dt>
         <dd>
-          <dl data-fallow="object">
+          <dl itemscope>
             <dt>title</dt>
             <dd>S</dd>
             <dt>GlossList</dt>
             <dd>
-              <dl data-fallow="object">
+              <dl itemscope>
                 <dt>GlossEntry</dt>
                 <dd>
-                  <dl data-fallow="object">
+                  <dl itemscope>
                     <dt>ID</dt>
                     <dd>SGML</dd>
                     <dt>SortAs</dt>
@@ -33,15 +33,15 @@
                     <dt>Acronym</dt>
                     <dd>SGML</dd>
                     <dt>Abbrev</dt>
-                    <dd>ISO 8879 1986</dd>
+                    <dd>ISO 8879:1986</dd>
                     <dt>GlossDef</dt>
                     <dd>
-                      <dl data-fallow="object">
+                      <dl itemscope>
                         <dt>para</dt>
-                        <dd>A meta markup language used to create markup languages such as DocBook</dd>
+                        <dd>A meta-markup language used to create markup languages such as DocBook.</dd>
                         <dt>GlossSeeAlso</dt>
                         <dd>
-                          <ol data-fallow="array">
+                          <ol itemscope>
                             <li>GML</li>
                             <li>XML</li>
                           </ol>
@@ -60,35 +60,15 @@
     </dd>
   </dl>
 </div>
+<script src="js/fallow.js" type="text/javascript">
+</script>
 <script>
-(function fallow( window, undefined ) {
-var rjseon = [
-	[/^[^<]*/,""],
-	[/[^>]*$/,""],
-	[/\t\r\n/g,""],
-	[/>\s+</g,"><"],
-	[/<dl data-fallow="object"><dt>/g,"{"],
-	[/<\/dd><\/dl>/g,"}"],
-	[/<\/dt><dd>/g,":"],
-	[/(<\/dd><d[dt]>|<\/li><li>)/g,","],
-	[/<ol data-fallow="array"><li>/g,"["],
-	[/<\/li><\/ol>/g,"]"],
-	[/([\w\s]+)/g,"\"$1\""],
-	[/"([\d\.]+|true|false|null)"/g,"$1"]
-]
-var j=rjseon.length;
-var i=0;
-var fallow = function fallow( str ){
-for (i;i < j;i++) {
-	str = str.replace(rjseon[i][0],rjseon[i][1]);
-}
-return str
-}
-window.fallow = fallow;
-})(window)
-
-var revive = window.JSON.parse(fallow(document.getElementById('jseon').innerHTML))
-console.log(revive)
+var a = new Date();
+fallow.farm(document.getElementById('jseon').innerHTML);
+var b = new Date();
+console.log(b-a);
+var revive = window.JSON.parse(fallow.harvest);
+console.log(revive);
 </script>
 </body>
 </html>
